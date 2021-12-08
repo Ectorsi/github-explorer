@@ -1,10 +1,10 @@
 export function RepositoryItem({ repository }) {
     return (
         <li>
-            <strong>{repository.name ?? 'Default'}</strong>
-            <p>{repository.description}</p>
+            <strong>{repository.name}</strong>
+            <p>{repository.language ?? 'No language'}</p>
 
-            <a href={repository.link}>
+            <a href={repository.html_url}>
                 Acessar repositórios
             </a>
         </li>
