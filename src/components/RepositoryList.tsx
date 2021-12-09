@@ -3,11 +3,15 @@ import '../styles/repositories.scss';
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-//"https://api.github.com/users/Ectorsi/repos"
+type RepositoryListType = {
+    name: string;
+    language: string;
+    html_url: string;
+}
 
 export function RepositoryList() {
 
-    const [repositories, setRepositories] = useState([]);
+    const [repositories, setRepositories] = useState<RepositoryListType[]>([]);
 
     useEffect(() => {
         axios.get('https://api.github.com/users/ectorsi/repos')
@@ -26,7 +30,7 @@ export function RepositoryList() {
             <ul>
                 {repositories.map(repository => {
                     return <RepositoryItem 
-                    key={repository.id} 
+                    key={repository.name} 
                     repository={repository}
                     />
                 })}
